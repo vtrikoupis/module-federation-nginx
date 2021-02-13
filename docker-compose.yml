@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  mf-nginx-demo:
+    container_name: mf-medium-article
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args: 
+        - REACT_APP_BUILD_NUMBER=2.0.0
+    ports:
+      - "80:80"
+    # environment: 
+    # - REACT_APP_API_URL=2.0.0 # build time variables (anything our dockerfile depends on)
+    # the mounted volumes (folders which are outside docker but being used by docker)
+    volumes:
+      - .:/usr/src/app
+      - /app/node_modules/
+      - /app/apps/core/node_modules/
+      - /app/apps/shared/node_modules/
+      - /app/apps/another_micro_app/node_modules/
+
