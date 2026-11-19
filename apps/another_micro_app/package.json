@@ -2,16 +2,16 @@
   "name": "another_micro_app",
   "version": "1.0.0",
   "devDependencies": {
-    "@babel/core": "7.12.16",
-    "@babel/preset-env": "7.12.16",
-    "@babel/preset-react": "7.12.13",
-    "babel-loader": "8.2.2",
-    "css-loader": "5.0.2",
-    "html-webpack-plugin": "4.5.0",
-    "style-loader": "2.0.0",
-    "webpack": "5.10.0",
-    "webpack-cli": "4.5.0",
-    "webpack-dev-server": "4.0.0-beta.0"
+    "@babel/core": "^7.29.13",
+    "@babel/preset-env": "^7.29.14",
+    "@babel/preset-react": "^7.29.7",
+    "babel-loader": "^10.1.1",
+    "css-loader": "^7.1.5",
+    "html-webpack-plugin": "^5.6.8",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.112.2",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^6.1.0"
   },
   "dependencies": {
     "react": "17.0.1",
@@ -19,11 +19,11 @@
   },
   "scripts": {
     "build": "rm -rf dist && webpack --mode production",
-    "clean": "rm -rf node_modules && rm package-lock.json",
-    "dev": "webpack-dev-server --open --mode development",
+    "clean": "rm -rf dist",
+    "dev": "webpack serve --open --mode development",
     "serve": "serve -s dist -p 8080",
-    "install:ci": "npm ci",
-    "install:parallel": "npm install"
+    "install:ci": "npm --prefix ../.. ci",
+    "install:parallel": "npm --prefix ../.. install"
   },
   "author": "its@vangel.is",
   "license": "ISC"

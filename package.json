@@ -1,20 +1,18 @@
 {
   "version": "1.0.0",
   "private": true,
-  "workspaces": {
-    "packages": [
-      "apps/*"
-    ]
-  },  
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
-    "build": "lerna run --parallel build",
-    "clean": "lerna run --parallel clean",
-    "start": "lerna run --parallel dev",
-    "install:parallel": "lerna run --parallel install:parallel"
-  },
-  "devDependencies": {
-    "lerna": "^3.22.1"
+    "build": "npm run build --workspaces",
+    "clean": "npm run clean --workspaces",
+    "start": "concurrently --kill-others-on-fail \"npm run dev -w core\" \"npm run dev -w another_micro_app\" \"npm run dev -w shared\"",
+    "install:parallel": "npm install"
   },
   "author": "its@vangel.is",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^10.0.7"
+  }
 }
